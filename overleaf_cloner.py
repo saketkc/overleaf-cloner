@@ -47,6 +47,8 @@ browser.open('https://www.overleaf.com/api/v0/current_user/docs/')
 all_docs_json = browser.response.json()['docs']
 
 tag = raw_input('Enter tag: ')
+root_location = raw_input('Enter root location:')
 
 for doc_json in all_docs_json:
+    os.chdir(root_location)
     clone_repo(doc_json, filter_by= {'tags': [tag]})
